@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   console.log(userinfo);
   return (
-    <section className='h-screen flex justify-center items-center my-3 px-1 py-2'>
+    <section className='md:h-screen flex justify-center items-center my-3 px-1 py-2'>
         <div className='w-11/12 bg-gradient-to-br from-[#00D2B5] to-[#01C4E0] p-3 rounded-md md:w-4/6'>
           <h2 className='font-bold text-2xl'>DASHBOARD</h2>
           <h3 className='text-xl'>USER PROFILE</h3>
