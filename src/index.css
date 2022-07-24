@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;700&family=Outfit:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@layer base {
+    body {
+        @apply bg-[#00C7D7] bg-opacity-70;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    h2, h3 {
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
+    p {
+        @apply text-xl;
+    }
+
+    input, select {
+        @apply w-full bg-inherit border-b border-black rounded-md outline-none px-2;
+    }
+}
+
+@layer components {
+    .form-control {
+        @apply flex flex-col my-2;
+    }
+
+    .btn {
+        @apply w-full text-xl text-slate-200 rounded-md py-3;
+    }
+}
