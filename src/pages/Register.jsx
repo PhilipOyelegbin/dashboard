@@ -62,7 +62,6 @@ const Register = () => {
             sessionStorage.getItem('data') === null && sessionStorage.setItem('data', data);
             navigate('/login');
         }
-        console.log(user.password);
     }
 
     const handleChange = (e) => {
