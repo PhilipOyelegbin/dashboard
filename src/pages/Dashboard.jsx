@@ -18,7 +18,7 @@ const Dashboard = () => {
           <h2 className='font-bold text-2xl'>DASHBOARD</h2>
           <h3 className='text-xl'>USER PROFILE</h3>
           <hr className='border-black' />
-          <img src={userinfo.profile || avatar} className='w-36 h-36 mx-auto mt-2 rounded-full' alt="" />
+          <img src={avatar} className='w-36 h-36 mx-auto mt-2 rounded-full' alt="" />
           <h2 className='text-2xl text-center'>{userinfo.username  || "No entry"}</h2>
           <p>Full Name: {userinfo.firstName || "not available"} {userinfo.lastName || "not available"}</p>
           <p>Email: {userinfo.email || "not available"}</p>

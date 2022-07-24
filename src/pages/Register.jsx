@@ -5,7 +5,6 @@ import register from '../assets/register.jpg';
 
 const Register = () => {
     const userData = {
-        profile: '',
         username: '',
         firstName: '',
         lastName: '',
@@ -77,10 +76,6 @@ const Register = () => {
             </div>
             <form onSubmit={handleRegister} className='h-full md:w-1/2 bg-gradient-to-br from-[#01C4E0] to-[#00D2B5] rounded-b-md md:rounded-l-none md:rounded-r-md p-1'>
                 <h2 className='text-2xl text-slate-600 text-center font-bold'>Create account</h2>
-                <div className='form-control'>
-                    <label htmlFor="profile">Upload image</label>
-                    <input type="text" name={'profile'} value={user.profile} onChange={handleChange} placeholder='Paste image url from file manager' />
-                </div>
                 <div className='form-control'>
                     <label htmlFor="username">User Name</label>
                     <input type="text" name={'username'} value={user.username} onChange={handleChange} placeholder='MoonShot' />
