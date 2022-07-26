@@ -1,8 +1,7 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Footer from './components/Footer';
-import Nav from './components/Nav';
+import SharedLayout from './components/SharedLayout';
 import Dashboard from './pages/Dashboard';
+import Error from './pages/Error';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
@@ -29,13 +28,14 @@ const App = () => {
   })();
   return (
     <>
-      <Nav/>
       <Routes>
-        <Route path='/' element={<Register/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/dashboard' element={<Dashboard/>}></Route>
+        <Route path='/' element={<SharedLayout/>}>
+          <Route index element={<Register/>}/>
+          <Route path='login' element={<Login/>}/>
+          <Route path='dashboard' element={<Dashboard/>}/>
+          <Route path='*' element={<Error/>}/>
+        </Route>
       </Routes>
-      <Footer/>
     </>
   )
 }

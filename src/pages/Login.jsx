@@ -1,34 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import login from '../assets/login.jpg';
+import { FormInput } from '../components/FormEntry';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // a state for showing error
     const [error, setError] = useState('');
     const [userinfo, setUserinfo] = useState({});
+    const [values, setValues] = useState({username: '', email: '', password: ''});
 
-    // a state for showing password
-    const [show, setShow] = useState(false);
+    const formAttributes = [
+        {id: 2, label: "Username", name: "username", type: "text", placeholder: "Enter username", error: "Username not valid"},
+        {id: 3, label: "Email", name: "email", type: "email", placeholder: "example@gmail.com", error: "Email not valid"},
+        {id: 4, label: "Password", name: "password", type: "password", placeholder: "xxxxxx", error: "Password not valid"}
+    ];
 
     useEffect(() => {
         const data = sessionStorage.getItem('data');
         const userinput = JSON.parse(data)
         setUserinfo(userinput);
+        document.title = 'Techathon - Login';
     }, [])
     
     const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if (userinfo?.username === username && userinfo?.email === email && userinfo?.password === password) {
-            navigate('/dashboard');
+        if (userinfo?.username !== values.username && userinfo?.email !== values.email && userinfo?.password !== values.password) {
+            setError('Data does not match, Please register!')
+        } else if (userinfo?.username !== values.username) {
+            setError('Username not valid')
+        } else if (userinfo?.email !== values.email) {
+            setError('Email not valid')
+        } else if (userinfo?.password !== values.password) {
+            setError('Password not valid')
         } else {
-            setError('Login failed, please register!')
+            navigate('/dashboard');
         }
     };
+
+    const handleChange = (e) => {
+        setValues({...values, [e.target.name] : e.target.value});
+    }
 
   return (
     <section className='md:h-screen flex justify-center items-center gap-3 p-5 mt-3'>
@@ -38,22 +51,9 @@ const Login = () => {
             </div>
             <form onSubmit={handleLogin} className='bg-gradient-to-br from-[#01C4E0] to-[#00D2B5] md:h-full md:w-1/2 rounded-b-md md:rounded-l-none md:rounded-r-md p-1'>
                 <h2 className='text-2xl text-indigo-600 text-center font-bold'>Log into dashboard</h2>
-                <div className='form-control'>
-                    <label htmlFor="">User Name</label>
-                    <input type="text" name='username' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='MoonShot' />
-                </div>
-                <div className='form-control'>
-                    <label htmlFor="">Email Address</label>
-                    <input type="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='example@gmail.com' />
-                </div>
-                <div className='form-control'>
-                    <label htmlFor="">Password</label>
-                    <div className='flex items-center border-b border-black rounded-md'>
-                        <input className='border-none' type={show ? "text": "password"} name='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='******' />
-                        <FaEye className={`w-6 h-6 cursor-pointer ${show ? "block" : "hidden"}`} onClick={() => setShow(prev => !prev)}/>
-                        <FaEyeSlash className={`w-6 h-6 cursor-pointer ${show ? "hidden" : "block"}`} onClick={() => setShow(prev => !prev)}/>
-                    </div>
-                </div>
+                {formAttributes?.map(obj => (
+                    <FormInput key={obj.id} {...obj} value={values[obj.name]} onchange={handleChange}/>
+                ))}
                 <div className='flex justify-between items-center my-3'>
                     <div className='flex items-center gap-1'>
                         <input className='w-auto' type="checkbox" name="remember" />

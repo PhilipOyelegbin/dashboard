@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import avatar from '../assets/avatar.jpg';
 
@@ -9,9 +9,9 @@ const Dashboard = () => {
     const user = sessionStorage.getItem('data');
     const savedData = JSON.parse(user);
     setUserinfo(savedData);
+    document.title = 'Techathon - Dashboard';
 }, []);
 
-  console.log(userinfo);
   return (
     <section className='md:h-screen flex justify-center items-center my-3 px-1 py-2'>
         <div className='w-11/12 bg-gradient-to-br from-[#00D2B5] to-[#01C4E0] p-3 rounded-md md:w-4/6'>
