@@ -78,15 +78,15 @@ const Register = () => {
             <div className='h-full md:w-1/2'>
                 <img src={register} className='w-full h-full rounded-t-md md:rounded-l-md md:rounded-r-none' alt="" />
             </div>
-            <form onSubmit={handleRegister} className='h-full md:w-1/2 bg-gradient-to-br from-[#01C4E0] to-[#00D2B5] rounded-b-md md:rounded-l-none md:rounded-r-md p-1'>
+            <form onSubmit={handleRegister} className='h-full md:w-1/2 bg-gradient-to-br from-[#01C4E0] to-[#00D2B5] rounded-b-md md:rounded-l-none md:rounded-r-md p-2'>
                 <h2 className='text-2xl text-slate-600 text-center font-bold'>Create account</h2>
                 <div className="flex flex-col items-center gap-2 md:flex-row my-1">
                     <FormInput label="Username" type="text" name="username" value={userdata.username} onchange={handleChange} placeholder="MoonShot" />
                     <FormInput label="Email address" type="email" name="email" value={userdata.email} onchange={handleChange} placeholder="example@gmail.com" />
                 </div>
                 <div className="flex flex-col items-center gap-2 md:flex-row my-1">
-                    <FormInput label="First name" type="text" name="firstName" value={userdata.firstName} onchange={handleChange} placeholder="Enter full name" />
-                    <FormInput label="Last name" type="text" name="lastName" value={userdata.lastName} onchange={handleChange} placeholder="Enter full name" />
+                    <FormInput label="First name" type="text" name="firstName" value={userdata.firstName} onchange={handleChange} placeholder="Enter first name" />
+                    <FormInput label="Last name" type="text" name="lastName" value={userdata.lastName} onchange={handleChange} placeholder="Enter last name" />
                 </div>
                 <div className="flex flex-col items-center gap-2 md:flex-row my-1">
                     <FormSelect label="Gender" name="gender" value={userdata.gender} onchange={handleChange}>

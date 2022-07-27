@@ -49,7 +49,7 @@ const Login = () => {
             <div className='md:h-full md:w-1/2'>
                 <img src={login} className='w-full h-full rounded-t-md md:rounded-l-md md:rounded-r-none' alt="" />
             </div>
-            <form onSubmit={handleLogin} className='bg-gradient-to-br from-[#01C4E0] to-[#00D2B5] md:h-full md:w-1/2 rounded-b-md md:rounded-l-none md:rounded-r-md p-1'>
+            <form onSubmit={handleLogin} className='bg-gradient-to-br from-[#01C4E0] to-[#00D2B5] md:h-full md:w-1/2 rounded-b-md md:rounded-l-none md:rounded-r-md p-2'>
                 <h2 className='text-2xl text-indigo-600 text-center font-bold'>Log into dashboard</h2>
                 {formAttributes?.map(obj => (
                     <FormInput key={obj.id} {...obj} value={values[obj.name]} onchange={handleChange}/>
