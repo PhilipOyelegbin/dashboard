@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import avatar from '../assets/avatar.jpg';
 
 const Dashboard = () => {
   const [userinfo, setUserinfo] = useState({});
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('username', userinfo.username);
+    navigate('/login');
+  }
 
   useEffect(() => {
     const user = sessionStorage.getItem('data');
@@ -28,7 +35,7 @@ const Dashboard = () => {
           <p>Birthday: {userinfo.birthday || "not available"}</p>
           <p>Occupation: {userinfo.occupation || "not available"}</p>
           <p>Marital Status: {userinfo.maritalStatus || "not available"}</p>
-          <div className='mt-2'><Link to={'/login'} className='text-xl bg-white hover:bg-slate-200 px-4 py-2 rounded-md'>Log Out</Link></div>
+          <button type='submit' onClick={handleLogout} className='text-xl bg-white hover:bg-slate-200 px-4 py-2 rounded-md'>Log Out</button>
         </div>
     </section>
   )

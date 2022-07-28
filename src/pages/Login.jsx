@@ -29,12 +29,13 @@ const Login = () => {
         if (userinfo?.username !== values.username && userinfo?.email !== values.email && userinfo?.password !== values.password) {
             setError('Data does not match, Please register!')
         } else if (userinfo?.username !== values.username) {
-            setError('Username not valid')
+            setError('Username not valid');
         } else if (userinfo?.email !== values.email) {
             setError('Email not valid')
         } else if (userinfo?.password !== values.password) {
             setError('Password not valid')
         } else {
+            sessionStorage.setItem('username', values.username);
             navigate('/dashboard');
         }
     };

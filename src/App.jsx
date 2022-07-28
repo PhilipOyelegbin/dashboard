@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import ProtectedRoutes from './components/ProtectedRoutes';
 import SharedLayout from './components/SharedLayout';
 import Dashboard from './pages/Dashboard';
 import Error from './pages/Error';
@@ -32,7 +33,9 @@ const App = () => {
         <Route path='/' element={<SharedLayout/>}>
           <Route index element={<Register/>}/>
           <Route path='login' element={<Login/>}/>
-          <Route path='dashboard' element={<Dashboard/>}/>
+          <Route element={<ProtectedRoutes/>}>
+            <Route path='dashboard' element={<Dashboard/>}/>
+          </Route>
           <Route path='*' element={<Error/>}/>
         </Route>
       </Routes>

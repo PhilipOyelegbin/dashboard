@@ -25,7 +25,7 @@
     }
 
     input, select {
-        @apply w-full bg-inherit border-b border-black rounded-md outline-none px-2;
+        @apply w-full bg-inherit border-b border-black outline-none px-2;
     }
 }
 

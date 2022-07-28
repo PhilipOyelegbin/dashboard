@@ -1,4 +1,4 @@
-import {FaFacebook, FaTwitter, FaLinkedin, FaGithub} from 'react-icons/fa'
+import {FaFacebook, FaTwitter, FaLinkedin, FaGithub} from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         <a href='https://mobile.twitter.com/OyelegbinPhilip' target='_blank'><FaTwitter className='w-5 h-5'/></a>
         <a href='https://github.com/PhilipOyelegbin' target='_blank'><FaGithub className='w-5 h-5'/></a>
       </div>
-        <p className='text-sm mt-2 md:mt-0'>&copy; 2022 MoonShot :: All right reserved</p>
+        <p className='text-sm mt-2 md:mt-0'>&copy; 2022 <a href="https://philipoyelegbin.github.io" className='text-teal-500' target="_blank" rel="noopener noreferrer">MoonShot</a> :: All right reserved</p>
     </footer>
   )
 }

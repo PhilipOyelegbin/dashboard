@@ -62,7 +62,7 @@ const Register = () => {
             setError('Accept terms and conditions before you continue')
         } else {
             const data = JSON.stringify(userdata);
-            sessionStorage.getItem('data') === null && sessionStorage.setItem('data', data);
+            sessionStorage.getItem('data') === null ? sessionStorage.setItem('data', data) : (sessionStorage.removeItem('data'), sessionStorage.setItem('data', data));
             navigate('/login');
         }
     }
@@ -81,7 +81,7 @@ const Register = () => {
             <form onSubmit={handleRegister} className='h-full md:w-1/2 bg-gradient-to-br from-[#01C4E0] to-[#00D2B5] rounded-b-md md:rounded-l-none md:rounded-r-md p-2'>
                 <h2 className='text-2xl text-slate-600 text-center font-bold'>Create account</h2>
                 <div className="flex flex-col items-center gap-2 md:flex-row my-1">
-                    <FormInput label="Username" type="text" name="username" value={userdata.username} onchange={handleChange} placeholder="MoonShot" />
+                    <FormInput label="Username" type="text" name="username" value={userdata.username} onchange={handleChange} placeholder="Enter username" />
                     <FormInput label="Email address" type="email" name="email" value={userdata.email} onchange={handleChange} placeholder="example@gmail.com" />
                 </div>
                 <div className="flex flex-col items-center gap-2 md:flex-row my-1">
@@ -117,16 +117,16 @@ const Register = () => {
                         <option value="Mobile developer">Mobile developer</option>
                         <option value="Copy writing">Copy writing</option>
                         <option value="Content writer">Content writer</option>
-                        <option value="Digital marketing">Digital Marheting</option>
+                        <option value="Digital marketing">Digital marketing</option>
                     </FormSelect>
                 </div>
                 <div className="flex flex-col items-center gap-2 md:flex-row my-1">
-                    <div className='flex items-end border-b border-black rounded-md'>
+                    <div className='w-full flex items-end border-b border-black'>
                         <FormInput label="Password" classname="border-none -mb-2" type={show ? "text": "password"} name="password" value={userdata.password} onchange={handleChange} placeholder="xxxxxx" />
                         <FaEye className={`w-6 h-6 cursor-pointer ${show ? "block" : "hidden"}`} onClick={() => setShow(prev => !prev)}/>
                         <FaEyeSlash className={`w-6 h-6 cursor-pointer ${show ? "hidden" : "block"}`} onClick={() => setShow(prev => !prev)}/>
                     </div>
-                    <div className='flex items-end border-b border-black rounded-md'>
+                    <div className='w-full flex items-end border-b border-black'>
                         <FormInput label="Confirm password" classname="border-none -mb-2" type={show ? "text": "password"} name="cPassword" value={userdata.cPassword} onchange={handleChange} placeholder="xxxxxx"/>
                         <FaEye className={`w-6 h-6 cursor-pointer ${show ? "block" : "hidden"}`} onClick={() => setShow(prev => !prev)}/>
                         <FaEyeSlash className={`w-6 h-6 cursor-pointer ${show ? "hidden" : "block"}`} onClick={() => setShow(prev => !prev)}/>
