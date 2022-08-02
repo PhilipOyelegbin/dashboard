@@ -1,18 +1,13 @@
 import {NavLink} from 'react-router-dom';
 import {FaHamburger, FaTimes} from 'react-icons/fa'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Nav = () => {
   const [show, setShow] = useState(false);
 
   const handleMenuContent = () => {
     setShow(!show)
-  };
-
-  useEffect(() => {
-    show === true ? (setTimeout(() => {setShow(false);}, 3000)) : null;
-  }, [show])
-  
+  };  
 
   const menuContent = [
     {id: 1, label: 'Register', link: '/'},
@@ -32,7 +27,7 @@ const Nav = () => {
       </button>
       <ul className={`fixed bg-slate-200 gap-2 w-full pl-3 py-4 top-12 transition-all ease-in-out duration-300 md:flex md:items-center md:static md:w-auto md-pl-0 md:py-0 ${show ? 'right-0' : '-right-full'}`}>
         {menuContent.map((contents) => (
-          <li className="text-xl" key={contents.id}><NavLink className={({isActive}) => isActive ? 'line-through' : ''} to={contents.link}>{contents.label}</NavLink></li>
+          <li className="text-xl" key={contents.id}><NavLink className={({isActive}) => isActive ? 'line-through' : ''} to={contents.link} onClick={handleMenuContent}>{contents.label}</NavLink></li>
         ))}
       </ul>
     </nav>
